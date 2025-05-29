@@ -1,0 +1,315 @@
+/* Genel Stil */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #003b6f; /* Arka plan rengi */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Sol Üstte Araştırma Üniversitesi ve Kurdele */
+#header-left {
+    z-index: 999;
+    font-family: italic;
+    color: #fff;
+    font-size: 14px;
+    margin-left: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Resim ile yazı arasındaki boşluk */
+}
+
+#header-left img {
+    width: 30px; /* Kurdele resmi boyutu */
+    height: auto;
+}
+
+#header-left p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Login Sayfası */
+#login-page {
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+#logo-section {
+    margin-bottom: 30px;
+}
+
+#logo-section img {
+    max-width: 250px; /* Logonun genişliği */
+    margin-bottom: -10px;
+}
+
+#logo-section h2 {
+    font-size: 18px;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#logo-section p {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #b0c4de;
+}
+
+/* Giriş Kutusu */
+#login-container {
+    background: #0a5275; /* Form arka plan rengi */
+    padding: 20px;
+    border-radius: 12px; /* Kenarları daha oval hale getirdik */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 350px;
+    width: 100%;
+}
+
+/* Tablar */
+#login-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background: none;
+    border: none;
+    font-size: 16px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: white;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.tab.active {
+    border-bottom: 2px solid #fefdf6;
+}
+
+/* Giriş formu input alanları */
+/* Öğrenci Numarası ve Şifre Kutuları */
+#login-form input {
+    width: 90%; /* Daha dar genişlik (kısaltma) */
+    padding: 8px 12px; /* Küçük padding */
+    margin-bottom: 12px; /* Küçük alt boşluk */
+    border: 1px solid #b0c4de;
+    border-radius: 12px; /* Oval köşeler */
+    background: #f4f4f4;
+    font-size: 14px; /* Daha küçük font */
+    box-sizing: border-box; /* Padding ve border da genişlik dahil olacak */
+}
+
+/* Şifre kutusunu özel olarak kısaltma */
+.password-container input {
+    width: 90%; /* Şifre kutusunu da kısaltıyoruz */
+}
+
+
+.password-container input {
+    width: calc(100% - 30px);
+}
+
+/* Şifreyi göster/gizle butonu */
+.toggle-password {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Şifreyi unuttum linki */
+.forgot-password {
+    font-size: 14px;
+    color: #fefdf6;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 15px; /* Daha küçük alt boşluk */
+}
+
+/* Giriş butonu */
+.login-btn {
+    width: 100%;
+    padding: 8px 12px; /* Daha küçük padding */
+    background: #007BFF;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px; /* Kenarları daha oval hale getirdik */
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #0056b3;
+}
+
+/* E-devlet giriş butonu */
+.login-edevlet {
+    width: 100%;
+    padding: 8px 12px; /* Daha küçük padding */
+    background: #ff4b5c;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px; /* Kenarları daha oval hale getirdik */
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-edevlet:hover {
+    background: #c31123;
+}
+
+
+/* Footer Linkler */
+/* Footer Linkler */
+#footer-links {
+    display: flex;
+    flex-wrap: wrap; /* Linklerin taşması için wrap kullanabiliriz */
+    justify-content: center; /* Linkleri ortalamak */
+    gap: 20px; /* Linkler arasındaki boşluk */
+    margin-top: 20px;
+    align-items: center;
+}
+
+/* Her bir satırdaki tüm linklerin aynı hizada olmasını sağlamak */
+.footer-row {
+    display: flex;
+    justify-content: center; /* Linkleri yatayda ortalamak */
+    gap: 30px; /* Linkler arasındaki boşluk */
+    flex-wrap: nowrap; /* Linklerin bir satıra yerleşmesini sağlamak */
+}
+
+/* Linkler */
+#footer-links a {
+    display: flex;
+    flex-direction: column; /* Görsel üstte, metin altta olacak */
+    align-items: center;
+    color: #b0c4de;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+}
+
+#footer-links a:hover {
+    color: white;
+    transform: translateY(-5px); /* Hover sırasında yukarı kayma efekti */
+}
+
+#footer-links a img {
+    width: 50px; /* Görsel boyutu */
+    height: 50px;
+    margin-bottom: 10px; /* Görsel ile metin arasındaki boşluk */
+    transition: transform 0.3s ease;
+}
+
+#footer-links a:hover img {
+    transform: scale(1.1); /* Hover sırasında büyüme efekti */
+}
+/* Panel Container */
+#panel-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+#panel-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.panel-sections button {
+    background: #f4f7f9;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    margin: 10px 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    color: #333;
+}
+
+.panel-sections button:hover {
+    background: #007bff;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.panel-sections button:active {
+    transform: translateY(1px);
+}
+
+/* Panel İçerik */
+.section {
+    display: none; /* Başlangıçta gizlenir */
+    text-align: left;
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.section h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.section p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.section ul li {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Çıkış Yap Butonu */
+#logout-btn {
+    background: #ff4b5c;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+}
+
+#logout-btn:hover {
+    background: #c31123;
+    transform: translateY(-2px);
+}
+ 

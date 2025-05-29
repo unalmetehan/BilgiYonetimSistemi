@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakiyelerim</title>
+    <link rel="stylesheet" href="panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        
+        #logo-container{
+            padding: 1px;
+            height: 20vh;
+        }
+
+        #notification-bar{
+            background-color: #d54949;
+            color: #ffffff;
+        }
+
+        #main-container {
+            display: flex;
+        }
+
+        #sidebar {
+            width: 250px;
+            background-color: #344955;
+            color: #ffffff;
+            padding: 15px;
+            height: 100vh;
+        }
+
+        #sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #sidebar li {
+            margin-bottom: 10px;
+        }
+
+        #sidebar a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        #sidebar a:hover {
+            background-color: #d54949;
+            color: #f1faff;
+        }
+
+        #sidebar .menu-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+
+        .submenu a {
+            font-size: 14px;
+        }
+
+        .menu-toggle .arrow {
+            margin-left: auto;
+            font-size: 12px;
+        }
+
+        .menu-toggle.active + .submenu {
+            display: block;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #ececec;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #header-text {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        /* Container Styling */
+.container {
+    font-family: Arial, sans-serif;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container h1, .container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.container p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: #0078d7;
+    color: #fff;
+}
+
+thead th {
+    text-align: left;
+    padding: 15px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #f4f4f4;
+}
+
+tbody td {
+    padding: 15px;
+    font-size: 14px;
+    color: #555;
+    text-align: left;
+}
+
+/* Balance Section Styling */
+.balance-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.balance-section input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin: 10px auto;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.balance-section button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.balance-section button:hover {
+    background-color: #005bb5;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tbody tr {
+        display: block;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        text-align: right;
+        border-bottom: 1px solid #eee;
+    }
+
+    tbody td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #333;
+        margin-right: 10px;
+        flex: 1;
+        text-align: left;
+    }
+
+    .balance-section input {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .balance-section button {
+        width: 100%;
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+        /* Kullanıcı bilgisi için düzenleme */
+        .user-info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 20px;
+        color: #ffffff;
+    }
+
+    #user-name {
+        margin-right: 10px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    /* Profil simgesi için tasarım */
+    .profile-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #ffffff;
+    }
+
+    .profile-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="logo-container">
+            <img src="imagepanel/panel_girişlogo.png" alt="KTÜ Logo" class="logo">
+            <div class="header-text">
+                <h1>Karadeniz Teknik Üniversitesi</h1>
+                <p>Bilgi Yönetim Sistemi</p>
+            </div>
+        </div>
+        <div class="user-info">
+            <span id="user-name">E*** A***</span>
+            <div class="profile-icon">
+                <img src="imagepanel/profile.png" alt="Profil Simgesi">
+            </div>
+        </div>
+    </header>
+
+    <div id="notification-bar">
+        Karadeniz Teknik Üniversitesi. Tüm hakları saklıdır.
+    </div>
+
+    <div id="main-container">
+        <aside id="sidebar">
+            <ul>
+                <li>
+                    <a href="panel.html">
+                        <img src="imagepanel/home.png" alt="Anasayfa" class="menu-icon">Ana Sayfa
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="menu-toggle">
+                        <img src="imagepanel/vcard.png" alt="Kişisel Bilgiler" class="menu-icon"> Kişisel Bilgiler <span class="arrow">▼</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="telefon_eposta.html">-Telefon/E-posta Güncelleme</a></li>
+                        <li><a href="bys_şifre_değiştirme.html">-BYS Şifre Değiştirme</a></li>
+                        <li><a href="mail_sifre_değiştirme.html">-Mail Şifre Değiştirme</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="menu-toggle">
+                        <img src="imagepanel/derseyazilim_32.png" alt="Ders İşlemleri" class="menu-icon"> Ders İşlemleri <span class="arrow">▼</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="ders_programı.html">-Ders Programı</a></li>
+                        <li><a href="vize-final notları.html">-Vize/Final Notları</a></li>
+                        <li><a href="devamsızlık.html">-Devamsızlık</a></li>
+                        <li><a href="transkiript.html">-Transkript</a></li>
+                        <li><a href="geçmiş_sınav_notları.html">-Geçmiş Sınav Notları</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="menu-toggle">
+                        <img src="imagepanel/diet.png" alt="Yemekhane İşlemleri" class="menu-icon"> Yemekhane İşlemleri <span class="arrow">▼</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="yemekhane_rezervasyon_alma.html">-Rezervasyon Alma</a></li>
+                        <li><a href="yemekhane_yemek_listesi.html">-Yemek Listesi</a></li>
+                        <li><a href="yemekhane_rezervasyonlarım.html">-Rezervasyonlarım</a></li>
+                        <li><a href="yemekhane_bakiye.html">-Bakiye Sorgulama</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="menu-toggle">
+                        <img src="imagepanel/spor.png" alt="Spor Sahaları Yönetimi" class="menu-icon"> Spor Sahaları Yönetimi <span class="arrow">▼</span></a>
+                        <ul class="submenu">
+                            <li><a href="rezervasyon_alma.html">-Rezervasyon Alma</a></li>
+                            <li><a href="sahalar.html">-Sahalar</a></li>
+                            <li><a href="rezervasyonlarım.html">-Rezervasyonlarım</a></li>
+                            <li><a href="bakiye_sorgulama.html">-Bakiye Sorgulama</a></li>
+                        </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" class="menu-toggle">
+                        <img src="imagepanel/başvuru (2).png" alt="Başvuru ve Staj İşlemleri" class="menu-icon"> Başvurular <span class="arrow">▼</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="kampüs_kart.html">-Kampüs Kart İşlemleri</a></li>
+                        <li><a href="erasmus_basvuru.html">-Erasmus Başvurusu</a></li>
+                        <li><a href="kısmi_zamanlı_calısma.html">-Kısmi Zamanlı Çalışma Başvurusu</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)" class="menu-toggle">
+                        <img src="imagepanel/staj.png" alt="Başvuru ve Staj İşlemleri" class="menu-icon"> Staj İşlemleri <span class="arrow">▼</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="duyurular.html">-Duyurlar</a></li>
+                        <li><a href="staj_basvuru_islemleri.html">-Staj Başvuru İşlemleri</a></li>
+                        <li><a href="tum_staj_durumu.html">-Tüm Staj Başvuruları</a></li>
+                        <li><a href="staj_için_gerekli belgeler.html">-Staj İçin Gerekli Belgeler</a></li>
+                        <li><a href="sss.html">-SSS </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="giriş.html">
+                        <img src="imagepanel/çıkış bys.png" alt="çıkış" class="menu-icon">Çıkış Yap
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <div class="container">
+            <h1>Bakiyelerim</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hizmet</th>
+                        <th>Bakiye</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>Spor Bakiye</td>
+                        <td>50,00 TL</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="balance-section">
+                <h2>Güncel Bakiye</h2>
+                <p>Spor Bakiye: 75,00 TL</p>
+
+                <h2>Bakiye Yükle</h2>
+                <input type="number" placeholder="Yüklemek istediğiniz miktar (TL)" id="amountToLoad">
+                <button onclick="loadBalance()">Bakiye Yükle</button>
+            </div>
+        </div>
+    </div>
+        <script src="panel.js"></script>
+        <script src="script.js"></script>
+</body>
+</html>

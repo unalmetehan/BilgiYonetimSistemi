@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Bilgi Paneli</title>
+    <link rel="stylesheet" href="panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<style>
+/* Genel stil ayarları */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Logo alanı */
+#logo-container {
+    padding: 1px;
+    height: 20vh;
+}
+
+/* Bildirim çubuğu */
+#notification-bar {
+    background-color: #d54949;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+            font-size: 24px;
+            color: #ececec;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+/* Ana konteyner */
+#main-container {
+    display: flex;
+}
+
+/* Sidebar */
+#sidebar {
+    width: 250px;
+    background-color: #344955;
+    color: #ffffff;
+    padding: 15px;
+    height: 100vh;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+#sidebar li {
+    margin-bottom: 10px;
+}
+
+#sidebar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#sidebar a:hover {
+    background-color: #d54949;
+    color: #f1faff;
+}
+
+#sidebar .menu-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu a {
+    font-size: 14px;
+}
+
+.menu-toggle .arrow {
+    margin-left: auto;
+    font-size: 12px;
+}
+
+.menu-toggle.active + .submenu {
+    display: block;
+}
+
+/* Rezervasyon formu */
+#reservation-form {
+    flex: 1;
+    max-width: 600px;
+    margin: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#reservation-form h2 {
+    text-align: center;
+    color: #344955;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* Gün kutuları */
+.day-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.day-box {
+    background-color: #ececec;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    position: relative;
+    flex: 1 1 calc(30% - 10px); /* Üç sütun için */
+}
+
+.add-button {
+    background-color: #d54949;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
+    background-color: #c43c3c;
+}
+
+/* Toplam tutar ve ödeme seçenekleri */
+#total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.payment-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.payment-option {
+    background-color: #344955;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex: 1;
+    text-align: center;
+    margin: 0 5px;
+}
+
+.payment-option:hover {
+    background-color: #d54949;
+}
+
+/* Rezervasyon butonu */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #d54949;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #c43c3c;
+}
+
+/* Responsive tasarım ayarları */
+@media (max-width: 768px) {
+    #reservation-form {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .day-box {
+        flex: 1 1 calc(45% - 10px); /* İki sütun için */
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+
+        /* Kullanıcı bilgisi için düzenleme */
+        .user-info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 20px;
+        color: #ffffff;
+    }
+
+    #user-name {
+        margin-right: 10px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    /* Profil simgesi için tasarım */
+    .profile-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #ffffff;
+    }
+
+    .profile-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="logo-container">
+            <img src="imagepanel/panel_girişlogo.png" alt="KTÜ Logo" class="logo">
+            <div class="header-text">
+                <h1>Karadeniz Teknik Üniversitesi</h1>
+                <p>Bilgi Yönetim Sistemi</p>
+            </div>
+        </div>
+        <div class="user-info">
+            <span id="user-name">E*** A***</span>
+            <div class="profile-icon">
+                <img src="imagepanel/profile.png" alt="Profil Simgesi">
+            </div>
+        </div>
+    </header>
+
+<div id="notification-bar">
+    Yemek Listesine Bakarak Rezervasyon Yapınız!
+</div>
+
+<div id="main-container">
+    <aside id="sidebar">
+        <ul>
+            <li>
+                <a href="panel.html">
+                    <img src="imagepanel/home.png" alt="Anasayfa" class="menu-icon">Ana Sayfa
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="menu-toggle">
+                    <img src="imagepanel/vcard.png" alt="Kişisel Bilgiler" class="menu-icon"> Kişisel Bilgiler <span class="arrow">▼</span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="telefon_eposta.html">-Telefon/E-posta Güncelleme</a></li>
+                    <li><a href="bys_şifre_değiştirme.html">-BYS Şifre Değiştirme</a></li>
+                    <li><a href="mail_sifre_değiştirme.html">-Mail Şifre Değiştirme</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="menu-toggle">
+                    <img src="imagepanel/derseyazilim_32.png" alt="Ders İşlemleri" class="menu-icon"> Ders İşlemleri <span class="arrow">▼</span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="ders_programı.html">-Ders Programı</a></li>
+                    <li><a href="vize-final notları.html">-Vize/Final Notları</a></li>
+                    <li><a href="devamsızlık.html">-Devamsızlık</a></li>
+                    <li><a href="transkiript.html">-Transkript</a></li>
+                    <li><a href="geçmiş_sınav_notları.html">-Geçmiş Sınav Notları</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="menu-toggle">
+                    <img src="imagepanel/diet.png" alt="Yemekhane İşlemleri" class="menu-icon"> Yemekhane İşlemleri <span class="arrow">▼</span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="yemekhane_rezervasyon_alma.html">-Rezervasyon Alma</a></li>
+                    <li><a href="yemekhane_yemek_listesi.html">-Yemek Listesi</a></li>
+                    <li><a href="yemekhane_rezervasyonlarım.html">-Rezervasyonlarım</a></li>
+                    <li><a href="yemekhane_bakiye.html">-Bakiye Sorgulama</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="menu-toggle">
+                    <img src="imagepanel/spor.png" alt="Spor Sahaları Yönetimi" class="menu-icon"> Spor Sahaları Yönetimi <span class="arrow">▼</span></a>
+                    <ul class="submenu">
+                        <li><a href="rezervasyon_alma.html">-Rezervasyon Alma</a></li>
+                        <li><a href="sahalar.html">-Sahalar</a></li>
+                        <li><a href="rezervasyonlarım.html">-Rezervasyonlarım</a></li>
+                        <li><a href="bakiye_sorgulama.html">-Bakiye Sorgulama</a></li>
+                    </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="menu-toggle">
+                    <img src="imagepanel/başvuru (2).png" alt="Başvuru ve Staj İşlemleri" class="menu-icon"> Başvurular <span class="arrow">▼</span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="kampüs_kart.html">-Kampüs Kart İşlemleri</a></li>
+                    <li><a href="erasmus_basvuru.html">-Erasmus Başvurusu</a></li>
+                    <li><a href="kısmi_zamanlı_calısma.html">-Kısmi Zamanlı Çalışma Başvurusu</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="javascript:void(0)" class="menu-toggle">
+                    <img src="imagepanel/staj.png" alt="Başvuru ve Staj İşlemleri" class="menu-icon"> Staj İşlemleri <span class="arrow">▼</span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="duyurular.html">-Duyurlar</a></li>
+                    <li><a href="staj_basvuru_islemleri.html">-Staj Başvuru İşlemleri</a></li>
+                    <li><a href="tum_staj_durumu.html">-Tüm Staj Başvuruları</a></li>
+                    <li><a href="staj_için_gerekli belgeler.html">-Staj İçin Gerekli Belgeler</a></li>
+                    <li><a href="sss.html">-SSS </a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="giriş.html">
+                    <img src="imagepanel/çıkış bys.png" alt="çıkış" class="menu-icon">Çıkış Yap
+                </a>
+            </li>
+        </ul>
+    </aside>
+        
+        <div id="reservation-form">
+            <h2>Yemekhane Rezervasyon Alma</h2>
+            <label for="month">Ay Seçin:</label>
+            <select id="month" onchange="updateDays()">
+                <option value="1">Ocak</option>
+                <option value="2">Şubat</option>
+                <option value="3">Mart</option>
+                <option value="4">Nisan</option>
+                <option value="5">Mayıs</option>
+                <option value="6">Haziran</option>
+                <option value="7">Temmuz</option>
+                <option value="8">Ağustos</option>
+                <option value="9">Eylül</option>
+                <option value="10">Ekim</option>
+                <option value="11">Kasım</option>
+                <option value="12">Aralık</option>
+            </select>
+        
+            <div class="day-container" id="day-container"></div>
+        
+            <div id="total">Toplam Tutar: 0 TL</div>
+        
+            <div class="payment-options">
+                <div class="payment-option" onclick="selectPayment('bakiye')">Bakiye ile Öde</div>
+                <div class="payment-option" onclick="selectPayment('kredi')">Kredi Kartı ile Öde</div>
+            </div>
+        
+            <button onclick="submitReservation()">Rezervasyonu Tamamla</button>
+        </div>
+        
+        <script>
+            let totalCost = 0;
+        
+            function updateDays() {
+                const month = document.getElementById('month').value;
+                const daysInMonth = new Date(2024, month, 0).getDate();
+                const dayContainer = document.getElementById('day-container');
+        
+                dayContainer.innerHTML = '';
+                for (let day = 1; day <= daysInMonth; day++) {
+                    dayContainer.innerHTML += `
+                        <div class="day-box">
+                            ${day}
+                            <button class="add-button" onclick="addReservation(${day})">+</button>
+                        </div>
+                    `;
+                }
+            }
+        
+            function addReservation(day) {
+                const mealPrice = 20; // Örnek yemek fiyatı
+                totalCost += mealPrice;
+                document.getElementById('total').innerText = `Toplam Tutar: ${totalCost} TL`;
+                alert(`${day} için rezervasyon eklendi!`);
+            }
+        
+            function selectPayment(method) {
+                if (method === 'bakiye') {
+                    alert('Bakiye ile ödeme seçildi.');
+                } else if (method === 'kredi') {
+                    alert('Kredi kartı ile ödeme seçildi.');
+                }
+            }
+        
+            function submitReservation() {
+                alert('Rezervasyon tamamlandı!');
+                // Burada rezervasyon işlemleri yapılabilir.
+            }
+        
+            // Sayfa yüklendiğinde günleri güncelle
+            window.onload = updateDays;
+        </script>
+        
+
+
+    <script src="panel.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
