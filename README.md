@@ -32,3 +32,9 @@ Projeyi çalıştırmak için:
 1. Bu repoyu indir veya klonla:
    ```bash
    git clone https://github.com/kullaniciadi/ktu-bys-demo.git
+Klosörü Herhangi bir derleyici de çalışıtın 
+
+📬 İletişim
+Geliştirici: Metehan Ünal,Eren Avcı
+Mail: [unlmetehan@gmail.com]
+LinkedIn / Web: [https://www.linkedin.com/in/-metehanunal/,metehanunal.com.tr/blog]
